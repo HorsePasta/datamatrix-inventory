@@ -83,14 +83,22 @@ function matrix() {
         };
     }
 
+    function createThenAdd() {
+        matrix.create()
+        matrix.addCsv()
+    }
+
     function addCsv() {
         console.log('matrix.addCsv')
         const data = $('#datamatrix-data').data('datamatrix')
-        manageCsv.add(data)
+        console.log(data)
+        manageCsv.add(JSON.parse(data))
     }
 
     matrix.create = create;
     matrix.read = read;
+    matrix.addCsv = addCsv;
+    matrix.createThenAdd = createThenAdd;
 }
 
 
@@ -140,6 +148,9 @@ function manageCsv() {
         //TODO add already exists message and check
         console.log('csv.add')
         console.log(data)
+
+        //TODO probably verify data is an object not string/json
+
         //Init new or existing database
         const db =  new PouchDB('csv-database');
 
@@ -368,10 +379,11 @@ function addAssetData(id, assetData, database = 'asset-data') {
 ///// Function scanAssetTag()
 // The scanAssetTag() function allows for scanning of asset tag barcodes into the asset-tag field of createDatamatrix.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function scanAssetTag() {
+function scanBarcodeTag(scanId) {
     console.log('scanAssetTag')
 
-    const readerDom = $('#tagReader')
+    const  readerId = scanId+'TagReader';
+    const readerDom = $('#'+readerId)
     readerDom.show()
     const scanWidth = readerDom.width() * 0.95;
     const config = {
@@ -384,13 +396,13 @@ function scanAssetTag() {
         ///DEBUG END
 
         // Add the result to the asset text field
-        $('#asset-tag-input').val(decodedText)
-        toastr.success('Scanned Asset Tag');
+        $('#'+scanId+'-tag-input').val(decodedText)
+        toastr.success('Scanned '+scanId+' Tag');
         html5QrCode.stop()
         readerDom.hide()
     }
 
-    const html5QrCode = new Html5Qrcode("tagReader", {
+    const html5QrCode = new Html5Qrcode(readerId, {
         experimentalFeatures: {
             useBarCodeDetectorIfSupported: true
         }

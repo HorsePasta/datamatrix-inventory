@@ -8,7 +8,8 @@
 <div class="grid-x fluid">
     <div class="cell">
         <a href="/" class="button small expanded secondary">Back</a>
-        <h3>Input info and click "Create" to generate a datamatrix</h3>
+        <h3 class="text-center">Enter Asset Information</h3>
+        <p class="text-center">Click "<i class="fas fa-barcode"></i> Scan" to scan barcodes. </p>
         <form id="datamatrix-form">
             <div class="grid-container">
                 <div class="grid-x grid-padding-x">
@@ -28,10 +29,17 @@
 
                     <div class="small-12 cell">
                         <div class="input-group">
-                            <span class="input-group-label">Model</span>
-                            <input class="input-group-field" type="text" name="model" placeholder="Model">
+                            <div class="input-group">
+                                <span class="input-group-label">Model</span>
+                                <input class="input-group-field" id="model-tag-input" type="text" name="model" placeholder="Model">
+                                <div class="input-group-button">
+                                    <button type="button" class="button" onclick="scanBarcodeTag('model')"><i class="fas fa-barcode"></i> Scan</button>
+                                </div>
+                            </div>
                         </div>
+                        <div id="modelTagReader"></div>
                     </div>
+
 
                     <div class="small-12 cell">
                         <div class="input-group">
@@ -39,27 +47,37 @@
                                     <span class="input-group-label">Asset Tag</span>
                                     <input class="input-group-field" id="asset-tag-input" type="text" name="asset" placeholder="Asset Tag">
                                     <div class="input-group-button">
-                                        <button type="button" class="button" onclick="scanAssetTag()"><i class="fas fa-barcode"></i> Scan</button>
+                                        <button type="button" class="button" onclick="scanBarcodeTag('asset')"><i class="fas fa-barcode"></i> Scan</button>
                                     </div>
                                 </div>
                         </div>
-                        <div id="tagReader">
-
-                        </div>
+                        <div id="assetTagReader"></div>
                     </div>
 
                     <div class="small-12 cell">
                         <div class="input-group">
-                            <span class="input-group-label">Serial</span>
-                            <input class="input-group-field" type="text" name="serial" placeholder="Serial">
+                            <div class="input-group">
+                                <span class="input-group-label">Serial</span>
+                                <input class="input-group-field" id="serial-tag-input" type="text" name="serial" placeholder="Serial">
+                                <div class="input-group-button">
+                                    <button type="button" class="button" onclick="scanBarcodeTag('serial')"><i class="fas fa-barcode"></i> Scan</button>
+                                </div>
+                            </div>
                         </div>
+                        <div id="serialTagReader"></div>
                     </div>
 
                     <div class="small-12 cell">
                         <div class="input-group">
-                            <span class="input-group-label">Product #</span>
-                            <input class="input-group-field" type="text" name="product" placeholder="Product #">
+                            <div class="input-group">
+                                <span class="input-group-label">Product</span>
+                                <input class="input-group-field" id="product-tag-input" type="text" name="product" placeholder="Product">
+                                <div class="input-group-button">
+                                    <button type="button" class="button" onclick="scanBarcodeTag('product')"><i class="fas fa-barcode"></i> Scan</button>
+                                </div>
+                            </div>
                         </div>
+                        <div id="productTagReader"></div>
                     </div>
 
 
@@ -95,7 +113,7 @@
             </div>
 
             <button type="button" class="button expanded" onclick="matrix.create()">Create</button>
-            <button type="button" class="button expanded secondary" onclick="manageCsv.add()">Create & Append CSV</button>
+            <button type="button" class="button expanded secondary" onclick="matrix.createThenAdd()">Create & Append CSV</button>
         </form>
 
     </div>
