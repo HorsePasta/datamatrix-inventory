@@ -1,24 +1,40 @@
 # About
 This project exists to allow for easy inventory of systems by utilizing datamatrix codes to hold asset information.
 
-| Feature      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
-
 ## Install / Usage
+
+Update an existing image
+```bash
+git clone https://github.com/HorsePasta/datamatrix-inventory.git .
+```
+
+Build the image.
 ```docker
 docker build -t datamatrix-inventory:latest .
-docker run -p 443:443
 ```
+
+Run the container via command.
+```docker
+docker run -itd -p 443:443 datamatrix-inventory:latest
+```
+
+Run the container via docker-compose
+```docker-compose
+todo
+```
+
 
 ## TODO
 This project is a work in progress and the following tasks still need tyo be completed.
-- Utilize Webpack, NPM, SASS to allow for faster development.
-- add to csv from info entry screen
-- scan normal barcodes option for entering asset numbers etc.
-- Add polish with JS animations
-- Allow for a remote server to be specified in the docker-compose to allow syncing of local tada to a remote database for datamatrix printing or storage
+
+| Feature      | Version Expected |
+| ----------- | ----------- |
+| Scan normal barcodes option for entering asset,model,serial,etc.  | 2.1.0 |
+| Allow pinning of fields for easy input of repeat data             | 2.2.0 |
+| Utilize Webpack, NPM, SASS to allow for faster development.       | 3.x |
+| Email finished CSV or upload to location / remote path            | 3.x |
+| Run or build options with custom domain + ssl via lets encrypt    | 3.x |
+| Add polish with JS animations                                     | 3.x |
 
 #Data Structure
 - Device Information
