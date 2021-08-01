@@ -34,6 +34,7 @@ This project is a work in progress and the following tasks still need tyo be com
 | Update notifier                                                   | 2.2.x |
 | Auto updater                                                      | 2.3.x |
 | Utilize Webpack, NPM, SASS to allow for faster development.       | 3.x |
+| Auto versioning support.                                          | 3.x |
 | Allow for external camera select for better laptop support        | 3.x |
 | Email finished CSV or upload to location / remote path            | 3.x |
 | Run or build options with custom domain + ssl via lets encrypt    | 3.x |
