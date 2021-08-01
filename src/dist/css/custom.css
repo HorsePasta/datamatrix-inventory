@@ -1,0 +1,34 @@
+body {
+
+}
+
+.asset-data-text {
+   #font-size: 28pt;
+    padding: 1rem;
+    color: #000000;
+}
+
+.hide-reader {
+    display: none;
+}
+
+
+.success-bar {
+    background-color: #22bb5b;
+    color:#ffffff;
+}
+
+.error-bar {
+    background-color: #e02626;
+    color:#ffffff;
+}
+
+.warning-bar {
+    background-color: #db8821;
+    color:#ffffff;
+}
+
+.info-bar {
+    background-color: #8fe4ff;
+    color:#ffffff;
+}

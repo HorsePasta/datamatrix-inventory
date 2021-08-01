@@ -1,0 +1,31 @@
+version: "3"
+services:
+  mysql:
+    image: linuxserver/mariadb
+    container_name: inventory_mysql
+    restart: always
+    volumes:
+      - ./mysql-config/:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Denver
+      - MYSQL_ROOT_PASSWORD="password"
+      - MYSQL_DATABASE="inventory"
+      - MYSQL_USER="inventory"
+      - MYSQL_PASSWORD="password"
+    ports:
+      - "3306:3306"
+  inventory:
+    image: php-inventory:latest
+    container_name: php-inventory
+    restart: always
+    depends_on:
+      - mysql
+    volumes:
+      - ./php-inventory/config/:/config
+    ports:
+      - "8222:80"
+
+
+
