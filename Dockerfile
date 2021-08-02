@@ -13,10 +13,10 @@ RUN apt-get install ssl-cert git -y
 RUN a2enmod ssl
 
 # Copy the code into the container
-# TODO Make this install and pull from github
-
-#RUN git clone https://github.com/HorsePasta/datamatrix-inventory.git datamatrix-inventory
 COPY ./src/ /var/www/html
+
+# Get php mailer
+RUN git clone --depth 1 https://github.com/PHPMailer/PHPMailer.git /var/www/html/phpmailer
 
 # Copy the virtual host config into the container.
 COPY virtual-host.conf /etc/apache2/sites-available/000-default.conf
