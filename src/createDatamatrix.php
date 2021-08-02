@@ -10,6 +10,8 @@
         <a href="/" class="button small expanded secondary">Back</a>
         <h3 class="text-center">Enter Asset Information</h3>
         <p class="text-center">Click "<i class="fas fa-barcode"></i> Scan" to scan barcodes. </p>
+        <p class="text-center">Click "<i class="fas fa-thumbtack"></i>" to keep existing text. </p>
+
         <form id="datamatrix-form">
             <div class="grid-container">
                 <div class="grid-x grid-padding-x">
@@ -35,6 +37,9 @@
                                 <div class="input-group-button">
                                     <button type="button" class="button" onclick="scanBarcodeTag('model')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
+                                <div class="input-group-button">
+                                    <button type="button" class="button pin pinned" onclick="pinInput('model')"><i class="fas fa-thumbtack"></i></button>
+                                </div>
                             </div>
                         </div>
                         <div id="modelTagReader"></div>
@@ -49,6 +54,9 @@
                                     <div class="input-group-button">
                                         <button type="button" class="button" onclick="scanBarcodeTag('asset')"><i class="fas fa-barcode"></i> Scan</button>
                                     </div>
+                                    <div class="input-group-button">
+                                        <button type="button" class="button pin" onclick="pinInput('asset')"><i class="fas fa-thumbtack"></i></button>
+                                    </div>
                                 </div>
                         </div>
                         <div id="assetTagReader"></div>
@@ -62,6 +70,9 @@
                                 <div class="input-group-button">
                                     <button type="button" class="button" onclick="scanBarcodeTag('serial')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
+                                <div class="input-group-button">
+                                    <button type="button" class="button pin" onclick="pinInput('serial')"><i class="fas fa-thumbtack"></i></button>
+                                </div>
                             </div>
                         </div>
                         <div id="serialTagReader"></div>
@@ -74,6 +85,9 @@
                                 <input class="input-group-field" id="product-tag-input" type="text" name="product" placeholder="Product">
                                 <div class="input-group-button">
                                     <button type="button" class="button" onclick="scanBarcodeTag('product')"><i class="fas fa-barcode"></i> Scan</button>
+                                </div>
+                                <div class="input-group-button">
+                                    <button type="button" class="button pin" onclick="pinInput('product')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>

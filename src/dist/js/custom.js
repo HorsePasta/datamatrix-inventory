@@ -10,6 +10,11 @@ toastr.options = {
 }
 
 
+//TODO implement pinInput
+function pinInput(id) {
+    console.log('pininput'+ id)
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///// Function matrix()
 // The matrix() function manages the creation of the data matrix for all components.

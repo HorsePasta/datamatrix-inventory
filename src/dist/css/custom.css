@@ -32,3 +32,12 @@ body {
     background-color: #8fe4ff;
     color:#ffffff;
 }
+
+
+.button.pin {
+    background-color: #bf4242;
+}
+
+.button.pin.pinned {
+    background-color: #61bb63;
+}
