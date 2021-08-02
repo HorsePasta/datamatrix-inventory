@@ -26,6 +26,7 @@
         matrix()
         manageCsv.get()
         scanner()
+        managePinStatus()
     </script>
 
 </head>
