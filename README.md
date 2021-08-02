@@ -3,25 +3,31 @@ This project exists to allow for easy inventory of systems by utilizing datamatr
 
 ## Install / Usage
 
-Update an existing image
+###Update an existing image
 ```bash
 git clone https://github.com/HorsePasta/datamatrix-inventory.git .
 ```
 
-Build the image.
+###Build the image.
 ```docker
 docker build -t datamatrix-inventory:latest .
 ```
 
-Run the container via command.
+###Run the container via command.
 ```docker
 docker run -itd -p 443:443 datamatrix-inventory:latest
 ```
 
-Run the container via docker-compose
+###Run the container via docker-compose
 ```docker-compose
 todo
 ```
+
+##Build with specific branch
+```docker
+docker build -t datamatrix-inventory:2.1 https://github.com/HorsePasta/datamatrix-inventory.git#2.1
+```
+
 
 
 ## TODO
