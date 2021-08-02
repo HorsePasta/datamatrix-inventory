@@ -33,12 +33,12 @@
                         <div class="input-group">
                             <div class="input-group">
                                 <span class="input-group-label">Model</span>
-                                <input class="input-group-field" id="model-tag-input" type="text" name="model" placeholder="Model">
+                                <input class="input-group-field" id="model-tag-input" type="text" name="model" placeholder="Model"  onchange="managePinStatus.enablePinButton('model');">
                                 <div class="input-group-button">
                                     <button type="button" class="button" onclick="scanBarcodeTag('model')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
                                 <div class="input-group-button">
-                                    <button type="button" class="button pin pinned" onclick="pinInput('model')"><i class="fas fa-thumbtack"></i></button>
+                                    <button type="button" class="button pin disabled" id="modelPin" onclick="managePinStatus.togglePin('model')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                         <button type="button" class="button" onclick="scanBarcodeTag('asset')"><i class="fas fa-barcode"></i> Scan</button>
                                     </div>
                                     <div class="input-group-button">
-                                        <button type="button" class="button pin" onclick="pinInput('asset')"><i class="fas fa-thumbtack"></i></button>
+                                        <button type="button" class="button pin disabled" id="assetPin" onclick="managePinStatus.togglePin('asset')"><i class="fas fa-thumbtack"></i></button>
                                     </div>
                                 </div>
                         </div>
@@ -71,7 +71,7 @@
                                     <button type="button" class="button" onclick="scanBarcodeTag('serial')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
                                 <div class="input-group-button">
-                                    <button type="button" class="button pin" onclick="pinInput('serial')"><i class="fas fa-thumbtack"></i></button>
+                                    <button type="button" class="button pin disabled" id="serialPin" onclick="managePinStatus.togglePin('serial')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                     <button type="button" class="button" onclick="scanBarcodeTag('product')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
                                 <div class="input-group-button">
-                                    <button type="button" class="button pin" onclick="pinInput('product')"><i class="fas fa-thumbtack"></i></button>
+                                    <button type="button" class="button pin disabled" id="productPin" onclick="managePinStatus.togglePin('product')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>

@@ -9,10 +9,101 @@ toastr.options = {
     "preventDuplicates": true
 }
 
+function managePinStatus() {
+    //TODO rewrite / write this
+    //TODO Display the pins when the page is loaded
 
-//TODO implement pinInput
-function pinInput(id) {
-    console.log('pininput'+ id)
+    function allPins() {
+        /////// for debug and printing atm
+        const db = new PouchDB('pin-database');
+        db.allDocs({
+            include_docs: true,
+            attachments: true
+        }).then(function (result) {
+
+            console.info(result.rows)
+
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+    }
+
+    function enablePinButton(id) {
+        //TODO trigger pin update if pin is currently enabled.
+        let input = $(`#${id}-tag-input`)
+        let button = $(`#${id}Pin`)
+        if (input.val().length > 0) {
+            button.removeClass('disabled');
+        } else {
+            button.addClass('disabled');
+        }
+    }
+
+
+    function getPinStatus(id) {
+        //TODO Either get all pins or get pin by giving it a name to lookup
+        const db = new PouchDB('pin-database');
+
+        db.get(id).then(function (doc){
+            console.log(doc)
+        }).catch(function (err) {
+            console.log(err)
+        })
+    }
+
+    function setPinStatus(id) {
+        const db = new PouchDB('pin-database');
+
+        db.get(id).then(function (doc) {
+            //Exists. Update it
+            console.warn(doc)
+
+            const updatepin = db.put({
+                _id: id,
+                _rev: doc._rev,
+                title: id,
+                content: $(`#${id}-tag-input`).val()
+            });
+
+
+
+        }).catch(function (err) {
+            //Does not exist. Create it
+            console.error('err does not exist')
+
+            if (err.name === 'not_found') {
+                const newpin =  {
+                    _id: id,
+                    title: id,
+                    content: $(`#${id}-tag-input`).val()
+                };
+                db.put(newpin);
+            } else { // hm, some other error
+                throw err;
+            }
+
+        }).catch(function (err) {
+            // handle any errors
+            console.error(err)
+        });
+    }
+
+    function togglePin(id) {
+        console.log(id + 'Pin')
+        $(`#${id}Pin`).toggleClass('pinned')
+        //TODO add a database that holds this information
+        managePinStatus.setPinStatus(id)
+
+    }
+
+    managePinStatus.togglePin = togglePin;
+    managePinStatus.setPinStatus = setPinStatus;
+    managePinStatus.getPinStatus = getPinStatus;
+    managePinStatus.enablePinButton = enablePinButton;
+
+
+    managePinStatus.allPins = allPins;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -386,11 +477,10 @@ function addAssetData(id, assetData, database = 'asset-data') {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function scanBarcodeTag(scanId) {
     console.log('scanAssetTag')
-
-    const  readerId = scanId+'TagReader';
+        const  readerId = scanId+'TagReader';
     const readerDom = $('#'+readerId)
     readerDom.show()
-    const scanWidth = readerDom.width() * 0.95;
+    //const scanWidth = readerDom.width() * 0.95;
     const config = {
         fps: 8
     };
@@ -405,6 +495,8 @@ function scanBarcodeTag(scanId) {
         toastr.success('Scanned '+scanId+' Tag');
         html5QrCode.stop()
         readerDom.hide()
+        // Explicitly enable the pin button after a scan.
+        $(`#${scanId}Pin`).removeClass('disabled')
     }
 
     const html5QrCode = new Html5Qrcode(readerId, {
@@ -413,6 +505,7 @@ function scanBarcodeTag(scanId) {
         }
 
     });
+
     html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess);
 }
 
