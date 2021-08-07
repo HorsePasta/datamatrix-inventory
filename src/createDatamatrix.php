@@ -25,7 +25,7 @@
                                     <button type="button" class="button" onclick="scanBarcodeTag('name')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
                                 <div class="input-group-button">
-                                    <button type="button" class="button pin disabled" id="namePin" onclick="managePinStatus.togglePin('name')"><i class="fas fa-thumbtack"></i></button>
+                                    <button type="button" class="button pin" disabled id="namePin" onclick="managePinStatus.togglePin('name')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                     <button type="button" class="button" onclick="scanBarcodeTag('manufacturer')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
                                 <div class="input-group-button">
-                                    <button type="button" class="button pin disabled" id="manufacturerPin" onclick="managePinStatus.togglePin('manufacturer')"><i class="fas fa-thumbtack"></i></button>
+                                    <button type="button" class="button pin" disabled id="manufacturerPin" onclick="managePinStatus.togglePin('manufacturer')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                     <button type="button" class="button" onclick="scanBarcodeTag('model')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
                                 <div class="input-group-button">
-                                    <button type="button" class="button pin disabled" id="modelPin" onclick="managePinStatus.togglePin('model')"><i class="fas fa-thumbtack"></i></button>
+                                    <button type="button" class="button pin" disabled id="modelPin" onclick="managePinStatus.togglePin('model')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                     <button type="button" class="button" onclick="scanBarcodeTag('product')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
                                 <div class="input-group-button">
-                                    <button type="button" class="button pin disabled" id="productPin" onclick="managePinStatus.togglePin('product')"><i class="fas fa-thumbtack"></i></button>
+                                    <button type="button" class="button pin" disabled id="productPin" onclick="managePinStatus.togglePin('product')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>

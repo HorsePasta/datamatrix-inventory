@@ -34,9 +34,9 @@ function managePinStatus() {
         let input = $(`#${id}-tag-input`)
         let button = $(`#${id}Pin`)
         if (input.val().length > 0) {
-            button.removeClass('disabled');
+            button.prop('disabled',false);
         } else {
-            button.addClass('disabled');
+            button.prop('disabled',true);
         }
     }
 
@@ -91,6 +91,7 @@ function managePinStatus() {
 
     function togglePin(id) {
         //TODO remove value when disabled.
+        //TODO use correcty disable prop
         console.log(id + 'Pin')
         $(`#${id}Pin`).toggleClass('pinned')
         managePinStatus.setPinStatus(id)
