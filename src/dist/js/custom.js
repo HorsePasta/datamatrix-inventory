@@ -10,26 +10,28 @@ toastr.options = {
 }
 
 function managePinStatus() {
-    //TODO rewrite / write this
-    //TODO Display the pins when the page is loaded
 
-    function allPins() {
-        /////// for debug and printing atm
+    function getCurrentPins() {
+        console.log('getCurrentPins')
         const db = new PouchDB('pin-database');
         db.allDocs({
             include_docs: true,
             attachments: true
         }).then(function (result) {
 
-            console.info(result.rows)
+            result.rows.forEach(function (row) {
+                $(`#${row.id}-tag-input`).val(row.doc.content)
+                managePinStatus.enablePinButton(row.id)
+                managePinStatus.togglePin(row.id)
+            })
 
         }).catch(function (err) {
             console.log(err);
         });
-
     }
 
     function enablePinButton(id) {
+        console.log('enablePinButton')
         //TODO trigger pin update if pin is currently enabled.
         let input = $(`#${id}-tag-input`)
         let button = $(`#${id}Pin`)
@@ -42,6 +44,7 @@ function managePinStatus() {
 
 
     function getPinStatus(id) {
+        console.log('getPinStatus')
         //TODO Either get all pins or get pin by giving it a name to lookup
         const db = new PouchDB('pin-database');
 
@@ -53,6 +56,7 @@ function managePinStatus() {
     }
 
     function setPinStatus(id) {
+        console.log('setPinStatus')
         const db = new PouchDB('pin-database');
 
         db.get(id).then(function (doc) {
@@ -66,12 +70,8 @@ function managePinStatus() {
                 content: $(`#${id}-tag-input`).val()
             });
 
-
-
         }).catch(function (err) {
             //Does not exist. Create it
-            console.error('err does not exist')
-
             if (err.name === 'not_found') {
                 const newpin =  {
                     _id: id,
@@ -89,11 +89,30 @@ function managePinStatus() {
         });
     }
 
+    function removePinStatus(id) {
+        console.log('removePinStatus')
+        const db = new PouchDB('pin-database');
+        db.get(id).then(function(doc) {
+            return db.remove(doc);
+        }).then(function (result) {
+            console.info(result)
+        }).catch(function (err) {
+            console.log(err);
+        });
+    }
+
     function togglePin(id) {
-        //TODO remove value when disabled.
-        console.log(id + 'Pin')
-        $(`#${id}Pin`).toggleClass('pinned')
-        managePinStatus.setPinStatus(id)
+        console.log('togglePin')
+        console.log(id)
+
+        const pin = $(`#${id}Pin`);
+        if (pin.hasClass('pinned')) {
+            pin.removeClass('pinned')
+            managePinStatus.removePinStatus(id)
+        } else {
+            pin.addClass('pinned')
+            managePinStatus.setPinStatus(id)
+        }
 
     }
 
@@ -101,9 +120,8 @@ function managePinStatus() {
     managePinStatus.setPinStatus = setPinStatus;
     managePinStatus.getPinStatus = getPinStatus;
     managePinStatus.enablePinButton = enablePinButton;
-
-
-    managePinStatus.allPins = allPins;
+    managePinStatus.getCurrentPins = getCurrentPins;
+    managePinStatus.removePinStatus = removePinStatus;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

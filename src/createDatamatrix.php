@@ -2,6 +2,9 @@
 <html lang="en">
 
 <?php require_once 'header.php'; ?>
+<script>
+    managePinStatus.getCurrentPins()
+</script>
 <body>
 
 <div class="grid-container">
@@ -95,7 +98,7 @@
                         <div class="input-group">
                             <div class="input-group">
                                 <span class="input-group-label">Product</span>
-                                <input class="input-group-field" id="product-tag-input" type="text" name="product" placeholder="Product">
+                                <input class="input-group-field" id="product-tag-input" type="text" name="product" placeholder="Product"  onchange="managePinStatus.enablePinButton('product');">
                                 <div class="input-group-button">
                                     <button type="button" class="button" onclick="scanBarcodeTag('product')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
