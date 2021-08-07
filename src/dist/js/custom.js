@@ -91,7 +91,6 @@ function managePinStatus() {
 
     function togglePin(id) {
         //TODO remove value when disabled.
-        //TODO use correcty disable prop
         console.log(id + 'Pin')
         $(`#${id}Pin`).toggleClass('pinned')
         managePinStatus.setPinStatus(id)
