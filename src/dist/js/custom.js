@@ -90,9 +90,9 @@ function managePinStatus() {
     }
 
     function togglePin(id) {
+        //TODO remove value when disabled.
         console.log(id + 'Pin')
         $(`#${id}Pin`).toggleClass('pinned')
-        //TODO add a database that holds this information
         managePinStatus.setPinStatus(id)
 
     }
