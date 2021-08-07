@@ -12,7 +12,6 @@ toastr.options = {
 function managePinStatus() {
 
     function getCurrentPins() {
-        console.log('getCurrentPins')
         const db = new PouchDB('pin-database');
         db.allDocs({
             include_docs: true,
@@ -56,13 +55,10 @@ function managePinStatus() {
     }
 
     function setPinStatus(id) {
-        console.log('setPinStatus')
         const db = new PouchDB('pin-database');
 
         db.get(id).then(function (doc) {
             //Exists. Update it
-            console.warn(doc)
-
             const updatepin = db.put({
                 _id: id,
                 _rev: doc._rev,
@@ -90,7 +86,6 @@ function managePinStatus() {
     }
 
     function removePinStatus(id) {
-        console.log('removePinStatus')
         const db = new PouchDB('pin-database');
         db.get(id).then(function(doc) {
             return db.remove(doc);
@@ -102,9 +97,6 @@ function managePinStatus() {
     }
 
     function togglePin(id) {
-        console.log('togglePin')
-        console.log(id)
-
         const pin = $(`#${id}Pin`);
         if (pin.hasClass('pinned')) {
             pin.removeClass('pinned')
