@@ -107,6 +107,19 @@
                         <div id="productTagReader"></div>
                     </div>
 
+                    <div class="small-12 cell">
+                        <div class="input-group">
+                            <div class="input-group">
+                                <span class="input-group-label">MAC Address</span>
+                                <input class="input-group-field" id="mac-tag-input" type="text" name="mac" placeholder="00:00:00:00:00:00">
+                                <div class="input-group-button">
+                                    <button type="button" class="button" onclick="scanBarcodeTag('mac')"><i class="fas fa-barcode"></i> Scan</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="macTagReader"></div>
+                    </div>
+
 
                         <div class="small-12 cell">
                         <fieldset class="cell large-6">
@@ -177,6 +190,7 @@
                         <th>Asset Tag</th>
                         <th>Serial</th>
                         <th>Product #</th>
+                        <th>MAC</th>
                         <th>Room#</th>
                         <th>Action</th>
                         <th>To Room#</th>

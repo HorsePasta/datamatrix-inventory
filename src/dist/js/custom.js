@@ -226,6 +226,7 @@ function manageCsv() {
                     <td>${row.doc.asset['asset']}</td>
                     <td>${row.doc.asset['serial']}</td>
                     <td>${row.doc.asset['product']}</td>
+                    <td>${row.doc.asset['mac']}</td>
                     <td>${row.doc.asset['room']}</td>
                     <td>${row.doc.asset['action']}</td>
                     <td>${row.doc.asset['toRoom']}</td>
@@ -400,6 +401,7 @@ function scanner() {
                 <p><b>Serial:</b> ${data['serial']}<p>
                 <p><b>Model:</b> ${data['model']}<p>
                 <p><b>Product #:</b> ${data['product']}<p>
+                <p><b>MAC:</b> ${data['mac']}<p>
             </div>
             </div>
             

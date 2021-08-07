@@ -36,6 +36,7 @@
                 <th>Asset Tag</th>
                 <th>Serial</th>
                 <th>Product #</th>
+                <th>MAC</th>
                 <th>Room#</th>
                 <th>Action</th>
                 <th>To Room#</th>
