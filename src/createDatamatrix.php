@@ -15,18 +15,37 @@
         <form id="datamatrix-form">
             <div class="grid-container">
                 <div class="grid-x grid-padding-x">
+
                     <div class="small-12 cell">
                         <div class="input-group">
-                            <span class="input-group-label">Item / Category</span>
-                            <input class="input-group-field" type="text" name="name" placeholder="'Z240 Workstation'">
+                            <div class="input-group">
+                                <span class="input-group-label">Item / Category</span>
+                                <input class="input-group-field" id="name-tag-input" type="text" name="name" placeholder="Z240 Workstation"  onchange="managePinStatus.enablePinButton('name');">
+                                <div class="input-group-button">
+                                    <button type="button" class="button" onclick="scanBarcodeTag('name')"><i class="fas fa-barcode"></i> Scan</button>
+                                </div>
+                                <div class="input-group-button">
+                                    <button type="button" class="button pin disabled" id="namePin" onclick="managePinStatus.togglePin('name')"><i class="fas fa-thumbtack"></i></button>
+                                </div>
+                            </div>
                         </div>
+                        <div id="nameTagReader"></div>
                     </div>
 
                     <div class="small-12 cell">
                         <div class="input-group">
-                            <span class="input-group-label">Manufacturer</span>
-                            <input class="input-group-field" type="text" name="manufacturer" placeholder="'Hewlett Packard">
+                            <div class="input-group">
+                                <span class="input-group-label">Manufacturer</span>
+                                <input class="input-group-field" id="manufacturer-tag-input" type="text" name="manufacturer" placeholder="HP"  onchange="managePinStatus.enablePinButton('manufacturer');">
+                                <div class="input-group-button">
+                                    <button type="button" class="button" onclick="scanBarcodeTag('manufacturer')"><i class="fas fa-barcode"></i> Scan</button>
+                                </div>
+                                <div class="input-group-button">
+                                    <button type="button" class="button pin disabled" id="manufacturerPin" onclick="managePinStatus.togglePin('manufacturer')"><i class="fas fa-thumbtack"></i></button>
+                                </div>
+                            </div>
                         </div>
+                        <div id="manufacturerTagReader"></div>
                     </div>
 
                     <div class="small-12 cell">
@@ -54,9 +73,6 @@
                                     <div class="input-group-button">
                                         <button type="button" class="button" onclick="scanBarcodeTag('asset')"><i class="fas fa-barcode"></i> Scan</button>
                                     </div>
-                                    <div class="input-group-button">
-                                        <button type="button" class="button pin disabled" id="assetPin" onclick="managePinStatus.togglePin('asset')"><i class="fas fa-thumbtack"></i></button>
-                                    </div>
                                 </div>
                         </div>
                         <div id="assetTagReader"></div>
@@ -69,9 +85,6 @@
                                 <input class="input-group-field" id="serial-tag-input" type="text" name="serial" placeholder="Serial">
                                 <div class="input-group-button">
                                     <button type="button" class="button" onclick="scanBarcodeTag('serial')"><i class="fas fa-barcode"></i> Scan</button>
-                                </div>
-                                <div class="input-group-button">
-                                    <button type="button" class="button pin disabled" id="serialPin" onclick="managePinStatus.togglePin('serial')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>
