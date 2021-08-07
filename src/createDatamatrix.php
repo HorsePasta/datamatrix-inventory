@@ -10,7 +10,7 @@
         <a href="/" class="button small expanded secondary">Back</a>
         <h3 class="text-center">Enter Asset Information</h3>
         <p class="text-center">Click "<i class="fas fa-barcode"></i> Scan" to scan barcodes. </p>
-        <p class="text-center">Click "<i class="fas fa-thumbtack"></i>" to keep existing text. </p>
+        <p class="text-center">Click "<i class="fas fa-thumbtack"></i>" to keep existing text between page reloads. </p>
 
         <form id="datamatrix-form">
             <div class="grid-container">
