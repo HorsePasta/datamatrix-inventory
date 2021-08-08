@@ -17,13 +17,12 @@ function managePinStatus() {
             include_docs: true,
             attachments: true
         }).then(function (result) {
-
             result.rows.forEach(function (row) {
                 $(`#${row.id}-tag-input`).val(row.doc.content)
+                //TODO This is triggering an update that causes a 409 update error
                 managePinStatus.enablePinButton(row.id)
                 managePinStatus.togglePin(row.id)
             })
-
         }).catch(function (err) {
             console.log(err);
         });
@@ -31,11 +30,11 @@ function managePinStatus() {
 
     function enablePinButton(id) {
         console.log('enablePinButton')
-        //TODO trigger pin update if pin is currently enabled.
-        let input = $(`#${id}-tag-input`)
-        let button = $(`#${id}Pin`)
+        const input = $(`#${id}-tag-input`)
+        const button = $(`#${id}Pin`)
         if (input.val().length > 0) {
             button.prop('disabled',false);
+            managePinStatus.setPinStatus(id);
         } else {
             button.prop('disabled',true);
         }
@@ -46,7 +45,6 @@ function managePinStatus() {
         console.log('getPinStatus')
         //TODO Either get all pins or get pin by giving it a name to lookup
         const db = new PouchDB('pin-database');
-
         db.get(id).then(function (doc){
             console.log(doc)
         }).catch(function (err) {
@@ -56,16 +54,14 @@ function managePinStatus() {
 
     function setPinStatus(id) {
         const db = new PouchDB('pin-database');
-
         db.get(id).then(function (doc) {
             //Exists. Update it
-            const updatepin = db.put({
+            db.put({
                 _id: id,
                 _rev: doc._rev,
                 title: id,
                 content: $(`#${id}-tag-input`).val()
             });
-
         }).catch(function (err) {
             //Does not exist. Create it
             if (err.name === 'not_found') {
@@ -78,7 +74,6 @@ function managePinStatus() {
             } else { // hm, some other error
                 throw err;
             }
-
         }).catch(function (err) {
             // handle any errors
             console.error(err)
@@ -306,7 +301,6 @@ function manageCsv() {
             location.reload()
         });
     }
-
 
     function save() {
         console.log('csv.save')
