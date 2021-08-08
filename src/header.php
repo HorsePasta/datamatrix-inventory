@@ -3,7 +3,7 @@
     <!-- IE support and mobile width init -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Inventory V2</title>
+    <title>Quick Inventory</title>
 
     <!-- Javascript libraries -->
     <script src="dist/js/html5-qrcode.min.js"></script>
@@ -28,5 +28,4 @@
         scanner()
         managePinStatus()
     </script>
-
 </head>
