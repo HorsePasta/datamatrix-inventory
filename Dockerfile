@@ -15,6 +15,9 @@ RUN a2enmod ssl
 # Copy the code into the container
 COPY ./src/ /var/www/html
 
+#Copy the uodate script into /opt
+COPY update.sh /opt
+
 # Get php mailer
 RUN git clone --depth 1 https://github.com/PHPMailer/PHPMailer.git /var/www/html/phpmailer
 

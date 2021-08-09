@@ -37,8 +37,8 @@ This project is a work in progress and the following tasks still need tyo be com
 | ----------- | ----------- | ----------- |
 | Scan normal barcodes option for entering asset,model,serial,etc.  | 2.1.x |🚧|
 | Allow pinning of fields for easy input of repeat data             | 2.1.x |✅|
-| Update notifier                                                   | 2.2.x |⭕|
-| Auto updater                                                      | 2.3.x |⭕|
+| Update notifier                                                   | 2.2.x |🚧|
+| Auto updater                                                      | 2.3.x |🚧|
 | Utilize Webpack, NPM, SASS to allow for faster development        | 3.x |⭕|
 | Implement service works for fully offline functionality           | 3.x |⭕|
 | Auto versioning support                                           | 3.x |⭕|
