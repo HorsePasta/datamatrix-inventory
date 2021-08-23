@@ -127,7 +127,7 @@ function matrix() {
             const formData = $('#datamatrix-form').serializeArray()
             const formObject = {}
             formData.forEach(function (input) {
-                if (input.value === undefined || input.value == "" ) {
+                if (!input.value) {
                     formObject[input.name] = "N/A"
                 } else {
                     formObject[input.name] = input.value
@@ -224,17 +224,17 @@ function manageCsv() {
             result.rows.forEach(function(row){
                 $('#csv-display-table-data').append(`
                 <tr data-raw-json='${row.doc.asset['asset']}'>
-                    <td>${row.doc.asset['name']}</td>
-                    <td>${row.doc.asset['manufacturer']}</td>
-                    <td>${row.doc.asset['model']}</td>
-                    <td>${row.doc.asset['asset']}</td>
-                    <td>${row.doc.asset['serial']}</td>
-                    <td>${row.doc.asset['product']}</td>
-                    <td>${row.doc.asset['mac']}</td>
-                    <td>${row.doc.asset['room']}</td>
-                    <td>${row.doc.asset['action']}</td>
-                    <td>${row.doc.asset['toRoom']}</td>
-                    <td>${row.doc.asset['notes']}</td>
+                    <td>${checkValue(row.doc.asset['name'])}</td>
+                    <td>${checkValue(row.doc.asset['make'])}</td>
+                    <td>${checkValue(row.doc.asset['model'])}</td>
+                    <td>${checkValue(row.doc.asset['asset'])}</td>
+                    <td>${checkValue(row.doc.asset['serial'])}</td>
+                    <td>${checkValue(row.doc.asset['product'])}</td>
+                    <td>${checkValue(row.doc.asset['mac'])}</td>
+                    <td>${checkValue(row.doc.asset['action'])}</td>
+                    <td>${checkValue(row.doc.asset['room'])}</td>
+                    <td>${checkValue(row.doc.asset['toRoom'])}</td>
+                    <td>${checkValue(row.doc.asset['notes'])}</td>
                     <td><button type="button" class="button small radius " onclick='matrix.create(${JSON.stringify(row.doc.asset)})'>Make Code</button>
                     <button type="button" class="button small radius alert" onclick="manageCsv.remove('${row.doc.asset['asset']}')">Remove</button></td>
                 </tr>
@@ -307,7 +307,7 @@ function manageCsv() {
         const db =  new PouchDB('csv-database');
         let rows = []
         let csvContent = "data:text/csv;charset=utf-8,";
-        csvContent +=  "Name,Manufacturer,Model,Asset Tag,Serial,Product Number,Room,Action,To Room,Notes\r\n"
+        csvContent +=  "Name,Make,Model,Asset Tag,Serial,Product Number,Room,Action,To Room,Notes\r\n"
 
         db.allDocs({
             include_docs: true
@@ -338,6 +338,13 @@ function manageCsv() {
             console.error(err);
         });
 
+    }
+
+    function checkValue(value) {
+        if (!value) {
+            return "N/A";
+        }
+        return value;
     }
 
     manageCsv.clear = clear;
@@ -399,7 +406,7 @@ function scanner() {
             <div class="cell small-6" >
             <div class="asset-data-text ">
                 <p><b>Name:</b> ${data['name']}<p>
-                <p><b>Manufacturer:</b> ${data['manufacturer']}<p>
+                <p><b>Make:</b> ${data['make']}<p>
                 <p><b>Asset Tag:</b> ${data['asset']}<p>
                 <p><b>Serial:</b> ${data['serial']}<p>
                 <p><b>Model:</b> ${data['model']}<p>

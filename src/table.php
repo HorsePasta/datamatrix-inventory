@@ -8,14 +8,14 @@
                     <tbody>
                     <tr>
                         <th>Name</th>
-                        <th>Manufacturer</th>
+                        <th>Make</th>
                         <th>Model</th>
                         <th>Asset Tag</th>
                         <th>Serial</th>
                         <th>Product #</th>
                         <th>MAC</th>
-                        <th>Room#</th>
                         <th>Action</th>
+                        <th>Room#</th>
                         <th>To Room#</th>
                         <th>Notes</th>
                         <th></th>

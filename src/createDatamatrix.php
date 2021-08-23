@@ -38,17 +38,17 @@
                     <div class="small-12 cell">
                         <div class="input-group">
                             <div class="input-group">
-                                <span class="input-group-label">Manufacturer</span>
-                                <input class="input-group-field" id="manufacturer-tag-input" type="text" name="manufacturer" placeholder="HP"  onchange="managePinStatus.enablePinButton('manufacturer');">
+                                <span class="input-group-label">Make</span>
+                                <input class="input-group-field" id="make-tag-input" type="text" name="make" placeholder="HP"  onchange="managePinStatus.enablePinButton('make');">
                                 <div class="input-group-button">
-                                    <button type="button" class="button" onclick="scanBarcodeTag('manufacturer')"><i class="fas fa-barcode"></i> Scan</button>
+                                    <button type="button" class="button" onclick="scanBarcodeTag('make')"><i class="fas fa-barcode"></i> Scan</button>
                                 </div>
                                 <div class="input-group-button">
-                                    <button type="button" class="button pin" disabled id="manufacturerPin" onclick="managePinStatus.togglePin('manufacturer')"><i class="fas fa-thumbtack"></i></button>
+                                    <button type="button" class="button pin" disabled id="makePin" onclick="managePinStatus.togglePin('make')"><i class="fas fa-thumbtack"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <div id="manufacturerTagReader"></div>
+                        <div id="makeTagReader"></div>
                     </div>
 
                     <div class="small-12 cell">
@@ -71,7 +71,7 @@
                     <div class="small-12 cell">
                         <div class="input-group">
                                 <div class="input-group">
-                                    <span class="input-group-label">Asset Tag</span>
+                                    <span class="input-group-label">A/T</span>
                                     <input class="input-group-field" id="asset-tag-input" type="text" name="asset" placeholder="Asset Tag">
                                     <div class="input-group-button">
                                         <button type="button" class="button" onclick="scanBarcodeTag('asset')"><i class="fas fa-barcode"></i> Scan</button>
@@ -84,7 +84,7 @@
                     <div class="small-12 cell">
                         <div class="input-group">
                             <div class="input-group">
-                                <span class="input-group-label">Serial</span>
+                                <span class="input-group-label">S/N</span>
                                 <input class="input-group-field" id="serial-tag-input" type="text" name="serial" placeholder="Serial">
                                 <div class="input-group-button">
                                     <button type="button" class="button" onclick="scanBarcodeTag('serial')"><i class="fas fa-barcode"></i> Scan</button>
@@ -97,7 +97,7 @@
                     <div class="small-12 cell">
                         <div class="input-group">
                             <div class="input-group">
-                                <span class="input-group-label">Product</span>
+                                <span class="input-group-label">P/N</span>
                                 <input class="input-group-field" id="product-tag-input" type="text" name="product" placeholder="Product"  onchange="managePinStatus.enablePinButton('product');">
                                 <div class="input-group-button">
                                     <button type="button" class="button" onclick="scanBarcodeTag('product')"><i class="fas fa-barcode"></i> Scan</button>
@@ -113,7 +113,7 @@
                     <div class="small-12 cell">
                         <div class="input-group">
                             <div class="input-group">
-                                <span class="input-group-label">MAC Address</span>
+                                <span class="input-group-label">MAC</span>
                                 <input class="input-group-field" id="mac-tag-input" type="text" name="mac" placeholder="00:00:00:00:00:00">
                                 <div class="input-group-button">
                                     <button type="button" class="button" onclick="scanBarcodeTag('mac')"><i class="fas fa-barcode"></i> Scan</button>
@@ -124,27 +124,28 @@
                     </div>
 
 
+                    <fieldset>
                         <div class="small-12 cell">
-                        <fieldset class="cell large-6">
-                            <legend>Action</legend>
-                            <input type="radio" name="action" value="Moved" id="formMoved" required=""><label for="formMoved">Moved</label>
-                        </fieldset>
-                    </div>
-
-
-                    <div class="small-12 cell">
-                        <div class="input-group">
-                            <span class="input-group-label">Room #</span>
-                            <input class="input-group-field" type="text" name="room" placeholder="Room / Location">
+                            <fieldset class="cell large-6">
+                                <legend>Action</legend>
+                                <input type="radio" name="action" value="Moved" id="formMoved" required=""><label for="formMoved">Moved</label>
+                            </fieldset>
                         </div>
-                    </div>
 
-                    <div class="small-12 cell">
-                        <div class="input-group">
-                            <span class="input-group-label">To Room #</span>
-                            <input class="input-group-field" type="text" name="toRoom" placeholder="To Room / Location">
+                        <div class="small-12 cell">
+                            <div class="input-group">
+                                <span class="input-group-label">Room #</span>
+                                <input class="input-group-field" type="text" name="room" placeholder="Room / Location">
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="small-12 cell">
+                            <div class="input-group">
+                                <span class="input-group-label">To Room #</span>
+                                <input class="input-group-field" type="text" name="toRoom" placeholder="To Room / Location">
+                            </div>
+                        </div>
+                    </fieldset>
 
 
                     <div class="small-12 cell">
